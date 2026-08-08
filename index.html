@@ -25,7 +25,18 @@
                 <img src="assets/logoff.png" alt="FF Digital Lab Logo">
             </a>
             <nav class="nav">
-                <ul class="nav-list">
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon-close" style="display: none;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <ul class="nav-list" id="nav-list">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="#servicios" class="nav-link">Servicios</a></li>
                     <li><a href="proyectos.html" class="nav-link">Proyectos</a></li>

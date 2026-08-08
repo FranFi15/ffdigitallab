@@ -94,7 +94,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const srvDemo = document.getElementById('srv-demo');
     if (!srvDemo || typeof gsap === 'undefined') return;
 
-    // Build DOM
+    // Responsive Mobile check
+    if (window.innerWidth <= 768) {
+        const mobileCards = SERVICES.map((s, i) => {
+            const bgStyle = s.image
+                ? `background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('${s.image}'); background-size: cover; background-position: center;`
+                : `background: ${s.gradient};`;
+            const emojiHtml = s.image ? '' : `<div class="srv-mobile-emoji">${s.icon}</div>`;
+            return `
+                <div class="srv-mobile-card" style="${bgStyle}">
+                    ${emojiHtml}
+                    <div class="srv-mobile-content">
+                        <div class="srv-mobile-category">${s.category}</div>
+                        <h3 class="srv-mobile-title">${s.title} <br> ${s.title2}</h3>
+                        <p class="srv-mobile-desc">${s.description}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        srvDemo.innerHTML = `<div class="srv-mobile-grid">${mobileCards}</div>`;
+        
+        const detailsOdd = document.getElementById('srv-details-odd');
+        const detailsEven = document.getElementById('srv-details-even');
+        const pagination = document.getElementById('srv-pagination');
+        
+        if(detailsOdd) detailsOdd.style.display = 'none';
+        if(detailsEven) detailsEven.style.display = 'none';
+        if(pagination) pagination.style.display = 'none';
+        
+        // Retornamos sin inicializar GSAP para esta sección
+        return;
+    }
+
+    // Build DOM (Desktop)
     const srvCards = SERVICES.map((s, i) => {
         // Si hay imagen la usamos; si no, usamos el degradado de color
         const bgStyle = s.image
@@ -423,6 +456,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 verTodosStatic.style.display = 'inline-flex';
             }
         }
+    }
+
+    // ==========================================================
+    // Menú Hamburguesa
+    // ==========================================================
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const navList = document.querySelector('.nav-list');
+    const iconMenu = document.querySelector('.icon-menu');
+    const iconClose = document.querySelector('.icon-close');
+    
+    if (hamburgerBtn && navList) {
+        hamburgerBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            if (navList.classList.contains('active')) {
+                iconMenu.style.display = 'none';
+                iconClose.style.display = 'block';
+            } else {
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+            }
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        const navLinks = navList.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+            });
+        });
     }
 
 });

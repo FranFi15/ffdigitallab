@@ -194,6 +194,16 @@ ul {
     gap: 32px;
 }
 
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1000;
+}
+
 .nav-link {
     font-weight: 500;
     font-size: 0.95rem;
@@ -1230,30 +1240,63 @@ ul {
    ========================================================================== */
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column;
+        flex-direction: row;
         gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-list {
-        gap: 12px;
-        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(8, 8, 16, 0.98);
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        gap: 30px;
+        z-index: 900;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out;
+    }
+    
+    .nav-list.active {
+        transform: translateY(0);
     }
     
     .nav-link {
-        font-size: 0.85rem;
+        font-size: 1.2rem;
     }
     
     .logo img {
-        height: 25px;
+        height: 40px; /* Un poco más pequeño que en escritorio pero visible */
     }
 
     .hero-title {
-        font-size: clamp(2rem, 8vw, 2.5rem);
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
     }
     
     .hero-subtitle {
         font-size: 1rem;
+    }
+
+    /* Reducción íconos hero */
+    .hero-icon-spin {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero-brand-name {
+        max-width: 240px;
     }
 
     .hero-actions {
@@ -1276,5 +1319,88 @@ ul {
     
     .projects {
         padding: 50px 0 60px;
+    }
+    
+    /* Servicios en Móvil (Lista estática) */
+    .services .section-header {
+        margin-bottom: 20px;
+    }
+    
+    .srv-mobile-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .srv-mobile-card {
+        position: relative;
+        border-radius: 16px;
+        padding: 30px 20px;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .srv-mobile-emoji {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2.5rem;
+        opacity: 0.8;
+    }
+    
+    .srv-mobile-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .srv-mobile-category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+    }
+    
+    .srv-mobile-title {
+        font-size: 1.5rem;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 10px 0;
+        line-height: 1.2;
+    }
+    
+    .srv-mobile-desc {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.5;
+        margin: 0;
+    }
+    
+    #servicios {
+        overflow: visible; /* Sobrescribir hidden si es necesario en móvil */
+        min-height: auto;
+        padding-bottom: 80px;
+    }
+    
+    /* Ocultar canvas y detalles originales en móvil */
+    .srv-container, #srv-pagination, .srv-details {
+        display: none !important;
+    }
+    
+    /* Pero necesitamos que el demo sí sea visible, ya que metimos nuestro grid adentro */
+    #srv-demo {
+        display: block !important;
+        position: relative;
+        height: auto;
     }
 }
