@@ -1,0 +1,216 @@
+/* ==========================================================================
+   proyectos.css — Estilos exclusivos de la página catálogo de proyectos
+   ========================================================================== */
+
+/* Hero de la página catálogo */
+.cat-main {
+    min-height: 100vh;
+}
+
+.cat-hero {
+    padding: 160px 0 80px;
+    position: relative;
+}
+
+.cat-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+}
+
+/* Botón volver */
+.cat-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease, gap 0.2s ease;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.cat-back-link:hover {
+    color: #fff;
+    gap: 12px;
+}
+
+.cat-back-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.cat-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0;
+}
+
+.cat-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 480px;
+}
+
+/* Sección grilla */
+.cat-grid-section {
+    padding: 0 0 140px;
+}
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    .cat-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* Tarjeta de proyecto */
+.cat-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(15, 15, 25, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    animation: cat-fade-in 0.5s ease-out both;
+}
+
+@keyframes cat-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cat-card:hover {
+    border-color: rgba(113, 28, 170, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Preview con iframe */
+.cat-card-preview {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #0a0a0f;
+}
+
+.cat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    transform-origin: top left;
+    /* Escala el iframe para simular un preview de escritorio */
+    transform: scale(0.6);
+    width: 167%;
+    height: 167%;
+}
+
+/* Overlay hover con botón */
+.cat-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.cat-card:hover .cat-card-overlay {
+    opacity: 1;
+}
+
+.cat-visit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #050505;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cat-visit-btn:hover {
+    background: rgba(255, 255, 255, 0.88);
+    transform: scale(1.03);
+    color: #050505;
+}
+
+.cat-visit-btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* Info de la tarjeta */
+.cat-card-info {
+    padding: 20px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cat-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.cat-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    background: rgba(113, 28, 170, 0.12);
+    border: 1px solid rgba(113, 28, 170, 0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
+}
+
+.cat-card-title {
+    font-size: 1.15rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.cat-card-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Nav link activo */
+.nav-link.active::after {
+    width: 100%;
+}

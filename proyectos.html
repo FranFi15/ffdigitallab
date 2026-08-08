@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | FF Digital Lab</title>
+    <meta name="description"
+        content="Catálogo completo de proyectos desarrollados por FF Digital Lab. Aplicaciones móviles, plataformas web y soluciones digitales a medida.">
+    <link rel="icon" type="image/png" href="assets/iconosolo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="proyectos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+
+    <!-- Header reutilizado -->
+    <header class="header" id="page-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logoff.png" alt="FF Digital Lab Logo">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="index.html#proyectos" class="nav-link active">Proyectos</a></li>
+                    <li><a href="index.html#contacto" class="btn btn-outline">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cat-main">
+
+        <!-- Hero de la página -->
+        <section class="cat-hero">
+            <div class="container cat-hero-content">
+                <a href="index.html" class="cat-back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                    Volver
+                </a>
+                <h1 class="cat-title">Todos los Proyectos</h1>
+                <p class="cat-subtitle">Soluciones digitales que construimos para nuestros clientes.</p>
+            </div>
+        </section>
+
+        <!-- Grilla de proyectos -->
+        <section class="cat-grid-section">
+            <div class="container">
+                <div class="cat-grid" id="cat-grid">
+                    <!-- Generado por JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="assets/ffdigitallab.png" alt="FF Digital Lab Logo" class="footer-logo">
+                <p>Desarrollo de software a medida y estrategias de Community Management.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Explorar</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#proyectos">Proyectos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="mailto:ffdigitallab@hotmail.com">ffdigitallab@hotmail.com</a></li>
+                    <li><a href="https://wa.me/5492915279308" target="_blank" rel="noopener noreferrer">WhatsApp: +54 9 291 527-9308</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="year"></span> FF Digital Lab. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/projects.js"></script>
+    <script src="proyectos.js"></script>
+</body>
+
+</html>
