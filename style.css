@@ -303,6 +303,10 @@ ul {
 /* ==========================================================================
    Services Section — Timed Cards Gallery
    ========================================================================== */
+.srv-mobile-wrapper {
+    display: none;
+}
+
 .services {
     position: relative;
     height: 100vh;
@@ -1403,8 +1407,12 @@ ul {
     }
     
     /* Ocultar canvas y detalles originales en móvil */
-    .srv-container, #srv-pagination, .srv-details {
+    .srv-desktop-wrapper, #srv-pagination, .srv-details {
         display: none !important;
+    }
+    
+    .srv-mobile-wrapper {
+        display: flex !important;
     }
     
     /* Pero necesitamos que el demo sí sea visible, ya que metimos nuestro grid adentro */

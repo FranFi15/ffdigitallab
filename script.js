@@ -95,42 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const srvDemo = document.getElementById('srv-demo');
     if (!srvDemo || typeof gsap === 'undefined') return;
 
-    // Responsive Mobile check
-    if (window.innerWidth <= 768) {
-        const mobileCards = SERVICES.map((s, i) => {
-            const bgStyle = s.image
-                ? `background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('${s.image}'); background-size: cover; background-position: center;`
-                : `background: ${s.gradient};`;
-            const emojiHtml = s.image ? '' : `<div class="srv-mobile-emoji">${s.icon}</div>`;
-            return `
-                <div class="srv-mobile-card" style="${bgStyle}">
-                    ${emojiHtml}
-                    <div class="srv-mobile-content">
-                        <div class="srv-mobile-category">${s.category}</div>
-                        <h3 class="srv-mobile-title">${s.title} <br> ${s.title2}</h3>
-                        <p class="srv-mobile-desc">${s.description}</p>
-                    </div>
+    // Generar DOM Móvil (Lista vertical)
+    const mobileCards = SERVICES.map((s, i) => {
+        const bgStyle = s.image
+            ? `background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('${s.image}'); background-size: cover; background-position: center;`
+            : `background: ${s.gradient};`;
+        const emojiHtml = s.image ? '' : `<div class="srv-mobile-emoji">${s.icon}</div>`;
+        return `
+            <div class="srv-mobile-card" style="${bgStyle}">
+                ${emojiHtml}
+                <div class="srv-mobile-content">
+                    <div class="srv-mobile-category">${s.category}</div>
+                    <h3 class="srv-mobile-title">${s.title} <br> ${s.title2}</h3>
+                    <p class="srv-mobile-desc">${s.description}</p>
                 </div>
-            `;
-        }).join('');
-        
-        srvDemo.innerHTML = `<div class="srv-mobile-grid">${mobileCards}</div>`;
-        
-        const detailsOdd = document.getElementById('srv-details-odd');
-        const detailsEven = document.getElementById('srv-details-even');
-        const pagination = document.getElementById('srv-pagination');
-        
-        if(detailsOdd) detailsOdd.style.display = 'none';
-        if(detailsEven) detailsEven.style.display = 'none';
-        if(pagination) pagination.style.display = 'none';
-        
-        // Retornamos sin inicializar GSAP para esta sección
-        return;
-    }
+            </div>
+        `;
+    }).join('');
 
-    // Build DOM (Desktop)
+    // Generar DOM Escritorio (GSAP Carrusel)
     const srvCards = SERVICES.map((s, i) => {
-        // Si hay imagen la usamos; si no, usamos el degradado de color
         const bgStyle = s.image
             ? `background-image: url('${s.image}'); background-size: cover; background-position: center;`
             : `background: ${s.gradient};`;
@@ -149,7 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const srvSlideNumbers = SERVICES.map((_, i) =>
         `<div class="srv-slide-item" id="srv-slide-item-${i}">${i + 1}</div>`).join('');
 
-    srvDemo.innerHTML = srvCards + srvCardContents;
+    // Inyectar ambos layouts en el DOM
+    srvDemo.innerHTML = `
+        <div class="srv-mobile-wrapper srv-mobile-grid">
+            ${mobileCards}
+        </div>
+        <div class="srv-desktop-wrapper">
+            ${srvCards}
+            ${srvCardContents}
+        </div>
+    `;
+    
     document.getElementById('srv-slide-numbers').innerHTML = srvSlideNumbers;
 
     // Helpers
