@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================
     // Servicios — Timed Cards Gallery (GSAP)
     // ==========================================================
-    const SERVICES = [
+    (() => {
+        const SERVICES = [
         { category: 'Desarrollo', title: 'APPS', title2: 'MÓVILES', description: 'Creación, compilación y despliegue de aplicaciones nativas/híbridas (React Native) con ciclo completo de publicación en Apple App Store y Google Play Store.', icon: '📱', gradient: 'linear-gradient(135deg,#711caa,#2d0845)', image: 'assets/appsmoviles.png' },
         { category: 'Desarrollo', title: 'WEB', title2: 'FULL STACK', description: 'Construcción de plataformas complejas y sistemas a medida utilizando el stack Node.js, Express, React y bases de datos.', icon: '🌐', gradient: 'linear-gradient(135deg,#1a237e,#4a148c)', image: 'assets/web.png' },
         { category: 'Datos', title: 'BASES DE', title2: 'DATOS SQL y NoSQL', description: 'Arquitectura, modelado y optimización de bases de datos orientadas a documentos.', icon: '🗄️', gradient: 'linear-gradient(135deg,#880e4f,#4a148c)', image: 'assets/basedatos.png' },
@@ -326,7 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    srvInit();
+        srvInit();
+    })();
 
     // ==========================================================
     // Lógica de Enlarge Gallery (Proyectos)
