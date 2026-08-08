@@ -204,6 +204,10 @@ ul {
     z-index: 1000;
 }
 
+.projects-mobile-wrapper {
+    display: none;
+}
+
 .nav-link {
     font-weight: 500;
     font-size: 0.95rem;
@@ -1414,6 +1418,95 @@ ul {
     .srv-mobile-wrapper {
         display: flex !important;
     }
+    
+    .projects-desktop-wrapper {
+        display: none !important;
+    }
+    
+    .projects-mobile-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
+        margin-top: 20px;
+    }
+
+    .project-mobile-card {
+        background: #0f0f15;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .project-mobile-preview {
+        position: relative;
+        width: 100%;
+        height: 240px;
+        background: #000;
+        overflow: hidden;
+    }
+
+    .project-mobile-iframe {
+        width: 167%;
+        height: 167%;
+        border: none;
+        pointer-events: none;
+        transform-origin: top left;
+        transform: scale(0.6);
+    }
+
+    .project-mobile-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        backdrop-filter: blur(2px);
+    }
+    
+    .project-mobile-card:hover .project-mobile-overlay, 
+    .project-mobile-card:active .project-mobile-overlay {
+        opacity: 1;
+    }
+
+    .project-mobile-btn {
+        background: var(--primary-color);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transform: translateY(15px);
+        transition: transform 0.3s ease;
+    }
+    
+    .project-mobile-card:hover .project-mobile-btn,
+    .project-mobile-card:active .project-mobile-btn {
+        transform: translateY(0);
+    }
+
+    .project-mobile-info {
+        padding: 20px;
+    }
+
+    .project-mobile-title {
+        font-size: 1.25rem;
+        font-family: var(--font-heading);
+        margin-bottom: 8px;
+        color: #fff;
+    }
+
+    .project-mobile-desc {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+        margin: 0;
+    }
+}
     
     /* Pero necesitamos que el demo sí sea visible, ya que metimos nuestro grid adentro */
     #srv-demo {

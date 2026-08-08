@@ -331,6 +331,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostramos un máximo de 5 proyectos en la galería de inicio
     const ITEMS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA.slice(0, 5) : [];
 
+    // Generar DOM Móvil
+    const mobileGrid = document.getElementById('projects-mobile-grid');
+    if (mobileGrid) {
+        mobileGrid.innerHTML = ITEMS.map((item) => `
+            <div class="project-mobile-card">
+                <div class="project-mobile-preview">
+                    <iframe src="${item.src}" title="${item.title}" scrolling="no" class="project-mobile-iframe" loading="lazy" tabindex="-1"></iframe>
+                    <div class="project-mobile-overlay">
+                        <a href="${item.link}" class="project-mobile-btn" target="_blank" rel="noopener noreferrer">Ver sitio</a>
+                    </div>
+                </div>
+                <div class="project-mobile-info">
+                    <h3 class="project-mobile-title">${item.title}</h3>
+                    <p class="project-mobile-desc">${item.description}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
     const track = document.getElementById('gallery-track');
     const galleryContent = document.getElementById('gallery-content');
     const kicker = galleryContent?.querySelector('.gallery-kicker');
