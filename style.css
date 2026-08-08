@@ -1322,8 +1322,19 @@ ul {
     }
     
     /* Servicios en Móvil (Lista estática) */
+    .services {
+        height: auto;
+        overflow: visible;
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+    
     .services .section-header {
-        margin-bottom: 20px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin-bottom: 30px;
     }
     
     .srv-mobile-grid {
@@ -1387,9 +1398,8 @@ ul {
     }
     
     #servicios {
-        overflow: visible; /* Sobrescribir hidden si es necesario en móvil */
+        overflow: visible;
         min-height: auto;
-        padding-bottom: 80px;
     }
     
     /* Ocultar canvas y detalles originales en móvil */
